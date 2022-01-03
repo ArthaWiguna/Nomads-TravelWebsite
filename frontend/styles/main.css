@@ -502,4 +502,21 @@ header p {
   color: #fff;
   background-color: silver;
 }
+
+.register {
+  min-height: 360px;
+}
+
+.register .form-register {
+  padding-left: 50px;
+  padding-right: 100px;
+}
+
+.register label {
+  width: 30%;
+}
+
+.register .btn-register {
+  margin-left: -46px;
+}
 /*# sourceMappingURL=main.css.map */

@@ -549,3 +549,21 @@ header p {
     }
 
 }
+
+.register {
+    min-height: 360px;
+
+    .form-register {
+        padding-left: 50px;
+        padding-right: 100px;
+    }
+
+    label {
+        width: 30%;
+    }
+
+    .btn-register {
+        margin-left: -46px;
+    }
+
+}

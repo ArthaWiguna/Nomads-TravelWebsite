@@ -78,35 +78,42 @@
     </div>
 
     <main>
-        <div class="header-login"></div>
-            <div class="header-content">
-                <div class="row title-login text-center">
-                    <h2>We Explore The New <br> Life Much Better</h2>
-                </div>
-                <div class="row login justify-content-center mt-5">
-                    <div class="col-10 col-sm-4 card-login p-4 text-center">
-                        <img src="frontend/images/logo_nomads.png" width="180px">
-                        <div class="form-login text-start px-5 py-4">
-                            <form action="">
-                                <label class="mb-2" for="email">Email Address</label> <br>
-                                <input class="form-control" type="email" id="email" name="email" required>
-                                <label class="mb-2 mt-2" for="password">Password</label> <br>
-                                <input class="form-control" type="password" id="password" name="password" required>
-
-                                <input class="rememberMe mt-3" type="checkbox" id="rememberMe" name="remeberMe">
-                                <label class="lbl-rememberMe" for="remeberMe">Remeber Me</label>
-                            </form>
-                        </div>
-                        <div class="text-center mb-3 px-5">
-                            <a href="" class="btn btn-login mt-2 mb-2" type="submit">Login</a><br>
-                            <a href="" class="btn btn-register">Register</a>
-                        </div>
-
+        <div class="row register justify-content-center">
+            <div class="col-md-6 mt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mt-1">Register</h5>
                     </div>
-
+                    <div class="form-register mt-4 py-3">
+                        <div class="d-md-flex align-items-center mb-3 me-auto">
+                            <label class="text-md-end me-4" for="name">Name</label>
+                            <input type="text" class="form-control w-100" name="name" required>
+                        </div>
+                        <div class="d-md-flex align-items-center mb-3">
+                            <label class="text-md-end me-4" for="email">Email Adress</label>
+                            <input type="email" class="form-control w-100" name="email" required>
+                        </div>
+                        <div class="d-md-flex align-items-center mb-3">
+                            <label class="text-md-end me-4" for="username">Username</label>
+                            <input type="text" class="form-control w-100" name="username" required>
+                        </div>
+                        <div class="d-md-flex align-items-center mb-3">
+                            <label class="text-md-end me-4" for="password">Password</label>
+                            <input type="password" class="form-control w-100" name="password" required>
+                        </div>
+                        <div class="d-md-flex align-items-center mb-3">
+                            <label class="text-md-end me-4" for="confirm">Confirm Password</label>
+                            <input type="password" class="form-control w-100" name="confirm" required>
+                        </div>
+                        <div class="d-md-flex align-items-cente mb-3">
+                            <label class="me-4"></label>
+                            <button class="btn btn-register btn-primary">Register</button>
+                        </div>
+                        
+                    </div>
                 </div>
-
             </div>
+        </div>   
     </main>
 
     <!-- footer -->
