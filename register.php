@@ -1,3 +1,21 @@
+<?php
+require('functions.php');
+
+if (isset($_POST["register"])) {
+
+    if (registration($_POST) > 0) {
+        echo "<script>
+                alert('Registration Succes!');
+                document.location.href = 'checkout.php';
+             </script>";
+    } else {
+        echo mysqli_error($conn);
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,42 +96,44 @@
     </div>
 
     <main>
-        <div class="row register justify-content-center">
-            <div class="col-md-6 mt-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mt-1">Register</h5>
-                    </div>
-                    <div class="form-register mt-4 py-3">
-                        <div class="d-md-flex align-items-center mb-3 me-auto">
-                            <label class="text-md-end me-4" for="name">Name</label>
-                            <input type="text" class="form-control w-100" name="name" required>
+        <form action="" method="POST">
+            <div class="row register justify-content-center">
+                <div class="col-md-6 mt-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mt-1">Register</h5>
                         </div>
-                        <div class="d-md-flex align-items-center mb-3">
-                            <label class="text-md-end me-4" for="email">Email Adress</label>
-                            <input type="email" class="form-control w-100" name="email" required>
+                        <div class="form-register mt-4 py-3">
+                            <div class="d-md-flex align-items-center mb-3 me-auto">
+                                <label class="text-md-end me-4" for="name">Name</label>
+                                <input type="text" class="form-control w-100" name="name" required>
+                            </div>
+                            <div class="d-md-flex align-items-center mb-3">
+                                <label class="text-md-end me-4" for="email">Email Adress</label>
+                                <input type="email" class="form-control w-100" name="email" required>
+                            </div>
+                            <div class="d-md-flex align-items-center mb-3">
+                                <label class="text-md-end me-4" for="username">Username</label>
+                                <input type="text" class="form-control w-100" name="username" required>
+                            </div>
+                            <div class="d-md-flex align-items-center mb-3">
+                                <label class="text-md-end me-4" for="password">Password</label>
+                                <input type="password" class="form-control w-100" name="password" required>
+                            </div>
+                            <div class="d-md-flex align-items-center mb-3">
+                                <label class="text-md-end me-4" for="confirm">Confirm Password</label>
+                                <input type="password" class="form-control w-100" name="confirm" required>
+                            </div>
+                            <div class="d-md-flex align-items-cente mb-3">
+                                <label class="me-4"></label>
+                                <button class="btn btn-register btn-primary" name="register">Register</button>
+                            </div>
+
                         </div>
-                        <div class="d-md-flex align-items-center mb-3">
-                            <label class="text-md-end me-4" for="username">Username</label>
-                            <input type="text" class="form-control w-100" name="username" required>
-                        </div>
-                        <div class="d-md-flex align-items-center mb-3">
-                            <label class="text-md-end me-4" for="password">Password</label>
-                            <input type="password" class="form-control w-100" name="password" required>
-                        </div>
-                        <div class="d-md-flex align-items-center mb-3">
-                            <label class="text-md-end me-4" for="confirm">Confirm Password</label>
-                            <input type="password" class="form-control w-100" name="confirm" required>
-                        </div>
-                        <div class="d-md-flex align-items-cente mb-3">
-                            <label class="me-4"></label>
-                            <button class="btn btn-register btn-primary">Register</button>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
-        </div>   
+        </form>
     </main>
 
     <!-- footer -->
