@@ -1,3 +1,15 @@
+<?php
+require('functions.php');
+
+if (isset($_POST['login'])) {
+    if (login($_POST) == 0) {
+        $error = true;
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,34 +91,39 @@
 
     <main>
         <div class="header-login"></div>
-            <div class="header-content">
-                <div class="row title-login text-center">
-                    <h2>We Explore The New <br> Life Much Better</h2>
-                </div>
-                <div class="row login justify-content-center mt-5">
-                    <div class="col-10 col-sm-4 card-login p-4 text-center">
-                        <img src="frontend/images/logo_nomads.png" width="180px">
-                        <div class="form-login text-start px-5 py-4">
-                            <form action="">
-                                <label class="mb-2" for="email">Email Address</label> <br>
-                                <input class="form-control" type="email" id="email" name="email" required>
-                                <label class="mb-2 mt-2" for="password">Password</label> <br>
-                                <input class="form-control" type="password" id="password" name="password" required>
+        <div class="header-content">
+            <div class="row title-login text-center">
+                <h2>We Explore The New <br> Life Much Better</h2>
+            </div>
+            <div class="row login justify-content-center mt-5">
+                <div class="col-10 col-sm-4 card-login p-4 text-center">
+                    <img src="frontend/images/logo_nomads.png" width="180px">
+                    <div class="form-login text-start px-5 py-4">
+                        <form action="" method="POST">
+                            <label class="mb-2" for="email">Email Address</label> <br>
+                            <input class="form-control" type="email" id="email" name="email" required>
+                            <label class="mb-2 mt-2" for="password">Password</label> <br>
+                            <input class="form-control" type="password" id="password" name="password" required>
 
-                                <input class="rememberMe mt-3" type="checkbox" id="rememberMe" name="remeberMe">
-                                <label class="lbl-rememberMe" for="remeberMe">Remeber Me</label>
-                            </form>
-                        </div>
-                        <div class="text-center mb-3 px-5">
-                            <a href="" class="btn btn-login mt-2 mb-2" type="submit">Login</a><br>
-                            <a href="" class="btn btn-register">Register</a>
-                        </div>
+                            <?php if (isset($error)) : ?>
+                                <p style="color: red;">Email atau password salah!</p>
+                            <?php endif; ?>
 
+                            <input class="rememberMe my-3" type="checkbox" id="rememberMe" name="remeberMe">
+                            <label class="lbl-rememberMe" for="remeberMe">Remeber Me</label>
+
+                            <div class="text-center  px-5">
+                                <button class="btn btn-login mt-2 mb-2" name="login" type="submit">Login</button><br>
+                                <a href="register.php" class="btn btn-register">Register</a>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
 
             </div>
+
+        </div>
     </main>
 
     <!-- footer -->

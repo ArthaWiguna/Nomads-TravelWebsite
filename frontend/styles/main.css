@@ -426,6 +426,7 @@ header p {
 .header-login {
   min-height: 420px;
   background-color: #e4e6eb;
+  margin-top: -70px;
 }
 
 .header-content {
@@ -433,7 +434,7 @@ header p {
 }
 
 .title-login {
-  margin-top: -350px;
+  margin-top: -326px;
 }
 
 .title-login h2 {
@@ -448,6 +449,7 @@ header p {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  margin-top: -24px;
 }
 
 .card-login:hover {

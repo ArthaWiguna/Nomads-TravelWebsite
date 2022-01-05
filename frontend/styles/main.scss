@@ -471,7 +471,7 @@ header p {
 .header-login {
     min-height: 420px;
     background-color: #e4e6eb;
-
+    margin-top: -70px;
 }
 
 .header-content {
@@ -479,7 +479,7 @@ header p {
 }
 
 .title-login {
-    margin-top: -350px;
+    margin-top: -326px;
 
     h2 {
         font-size: 48px;
@@ -492,6 +492,7 @@ header p {
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    margin-top: -24px;
 
     &:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

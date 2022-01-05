@@ -98,7 +98,7 @@ if (isset($_POST["register"])) {
     <main>
         <form action="" method="POST">
             <div class="row register justify-content-center">
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6 mt-4">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mt-1">Register</h5>

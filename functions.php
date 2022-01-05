@@ -71,3 +71,25 @@ function registration($data)
                         VALUES ('$name','$email','$username','$password')");
     return mysqli_affected_rows($conn);
 }
+
+
+//Login
+function login($data)
+{
+    global $conn;
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $result = mysqli_query($conn, "SELECT * FROM member_register WHERE email = '$email'");
+
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['password'])) {
+            echo "<script>
+                document.location.href = 'checkout.php';
+             </script>";
+
+            exit;
+        }
+    }
+}

@@ -198,7 +198,7 @@
                         </div>
                         <div class="join-container">
                             <div class="d-grid gap-2">
-                                <a href="login.html" class="btn btn-join text-center mt-3 py-2">Login or Register For Join</a>
+                                <a href="login.php" class="btn btn-join text-center mt-3 py-2">Login Or Register For Join</a>
                             </div>
                         </div>
                     </div>
