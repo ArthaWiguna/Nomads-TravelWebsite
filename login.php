@@ -1,4 +1,5 @@
 <?php
+
 require('functions.php');
 
 if (isset($_POST['login'])) {
@@ -38,7 +39,7 @@ if (isset($_POST['login'])) {
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <!-- logo -->
-            <a href="#" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <img src="frontend/images/logo_nomads.png" alt="logo_nomads">
             </a>
 
@@ -51,10 +52,10 @@ if (isset($_POST['login'])) {
             <div class="collapse navbar-collapse" id="navb">
                 <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item mx-md-2">
-                        <a href="" class="nav-link active">Home</a>
+                        <a href="index.php" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="#popular" class="nav-link">Travel Package</a>
+                        <a href="index.php" class="nav-link">Travel Package</a>
                     </li>
                     <!-- menu dropdown -->
                     <li class="nav-item dropdown mx-md-2">
@@ -72,13 +73,13 @@ if (isset($_POST['login'])) {
                     </li>
 
                     <li class="nav-item mx-md-2">
-                        <a href="#testimonial" class="nav-link">Tetimonial</a>
+                        <a href="index.php" class="nav-link">Tetimonial</a>
                     </li>
                 </ul>
 
                 <!-- Button mobile -->
                 <form action="" class="form-inline d-sm-block d-md-none">
-                    <button class="btn btn-login my-sm-0">Login</button>
+                    <a href="login.php" class="btn btn-login my-sm-0 py-4">Login</a>
                 </form>
 
                 <!-- Button Desktop -->

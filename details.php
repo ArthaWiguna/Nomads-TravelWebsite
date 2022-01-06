@@ -42,10 +42,10 @@
             <div class="collapse navbar-collapse" id="navb">
                 <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item mx-md-2">
-                        <a href="" class="nav-link active">Home</a>
+                        <a href="index.php" class="nav-link active">Home</a>
                     </li>
                     <li class="nav-item mx-md-2">
-                        <a href="" class="nav-link">Travel Package</a>
+                        <a href="index.php" class="nav-link">Travel Package</a>
                     </li>
                     <!-- menu dropdown -->
                     <li class="nav-item dropdown mx-md-2">
@@ -63,18 +63,18 @@
                     </li>
 
                     <li class="nav-item mx-md-2">
-                        <a href="" class="nav-link">Tetimonial</a>
+                        <a href="index.php" class="nav-link">Tetimonial</a>
                     </li>
                 </ul>
 
                 <!-- Button mobile -->
                 <form action="" class="form-inline d-sm-block d-md-none">
-                    <button class="btn btn-login my-sm-0">Login</button>
+                    <a href="login.php" class="btn btn-login my-sm-0">Login</a>
                 </form>
 
                 <!-- Button Desktop -->
                 <form action="" class="form-inline my-2 my-lg-0 d-none d-md-block">
-                    <button class="btn btn-login btn-navbar-right my-sm-0 px-4">Login</button>
+                    <a href="login.php" class="btn btn-login btn-navbar-right my-sm-0 px-4 py-4">Login</a>
                 </form>
             </div>
         </nav>

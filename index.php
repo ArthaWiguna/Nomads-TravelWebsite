@@ -66,12 +66,12 @@
 
                 <!-- Button mobile -->
                 <form action="" class="form-inline d-sm-block d-md-none">
-                    <button class="btn btn-login my-sm-0">Login</button>
+                    <a href="login.php" class="btn btn-login my-sm-0">Login</a>
                 </form>
 
                 <!-- Button Desktop -->
                 <form action="" class="form-inline my-2 my-lg-0 d-none d-md-block">
-                    <button class="btn btn-login btn-navbar-right my-sm-0 px-4">Login</button>
+                    <a href="login.php" class="btn btn-login btn-navbar-right my-sm-0 px-4 py-4">Login</a>
                 </form>
             </div>
         </nav>

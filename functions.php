@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 // Koneksi
 $conn = new mysqli('localhost', 'root', '', 'nomads');
 
@@ -31,6 +34,30 @@ function add()
               VALUES ('$username', '$nasionality', '$visa', '$passport', '$profile')";
 
     mysqli_query($conn, $query);
+}
+
+// Calculate total cost
+$tripPrice = 80;
+function totalMember()
+{
+    global $conn;
+    $getMember = mysqli_query($conn, "SELECT * FROM member");
+    $countMember = mysqli_num_rows($getMember);
+    return $countMember;
+}
+function costVisa()
+{
+    global $conn;
+    $getVisa = mysqli_query($conn, "SELECT visa FROM member WHERE visa = 'N/A'");
+    $calculateVisa = mysqli_num_rows($getVisa) * 190;
+    return $calculateVisa;
+}
+
+function subTotal()
+{
+    global $tripPrice;
+    $costTotal = $tripPrice * totalMember() + costVisa();
+    return $costTotal;
 }
 
 
@@ -85,10 +112,10 @@ function login($data)
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
+            $_SESSION['login'] = true;
             echo "<script>
                 document.location.href = 'checkout.php';
              </script>";
-
             exit;
         }
     }

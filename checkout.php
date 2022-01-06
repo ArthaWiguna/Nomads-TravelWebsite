@@ -1,4 +1,16 @@
 <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!isset($_SESSION['login'])) {
+    echo "<script>
+            document.location.href = 'login.php';
+          </script>";
+    exit;
+}
+
 // Koneksi
 require('functions.php');
 
@@ -6,10 +18,8 @@ require('functions.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     add();
 }
-
 // Select
 $member = query("SELECT * FROM member");
-
 ?>
 
 
@@ -180,11 +190,11 @@ $member = query("SELECT * FROM member");
                                 <table class="py-2">
                                     <tr>
                                         <td width="50%">Members</td>
-                                        <td width="50%" class="text-end data">2 Person</td>
+                                        <td width="50%" class="text-end data"><?= totalMember(); ?> Person</td>
                                     </tr>
                                     <tr>
                                         <td width="50%">Aditional VISA</td>
-                                        <td width="50%" class="text-end data">$190,00</td>
+                                        <td width="50%" class="text-end data">$<?= costVisa(); ?>,00</td>
                                     </tr>
                                     <tr>
                                         <td width="50%">Trip Price</td>
@@ -192,11 +202,11 @@ $member = query("SELECT * FROM member");
                                     </tr>
                                     <tr>
                                         <td width="50%">Sub Total</td>
-                                        <td width="50%" class="text-end data">$280,00</td>
+                                        <td width="50%" class="text-end data">$<?= subTotal(); ?>,00</td>
                                     </tr>
                                     <tr>
                                         <td width="50%">Total (+ Unique Code)</td>
-                                        <td width="50%" class="text-end data total fw-bold">$279,33</td>
+                                        <td width="50%" class="text-end data total fw-bold">$<?= subTotal(); ?>,33</td>
                                     </tr>
                                 </table>
                                 <hr>
