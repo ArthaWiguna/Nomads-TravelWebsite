@@ -17,6 +17,9 @@
     <!-- bootstrap.css -->
     <link rel="stylesheet" href="frontend/libraries/bootstrap/css/bootstrap.css">
 
+    <!-- AOS animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- scss -->
     <link rel="stylesheet" href="frontend/styles/main.css">
 </head>
@@ -83,10 +86,7 @@
             <br>
             As Easy On Click
         </h1>
-        <p class="mt-3">You will see a beautifull
-            <br>
-            moment you never find before
-        </p>
+        <p class="trip-exp mt-3"></p>
         <a href="#popular" class="btn btn-get-started px-4">
             Get Started
         </a>
@@ -131,7 +131,7 @@
         <section class="section-popular-content" id="popularContent">
             <div class="container">
                 <div class="section-popular-travel row justify-content-center">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-left" data-aos-delay="100">
                         <div class="card-travel text-center d-flex flex-column" style="background-image: url('frontend/images/popular-1.jpg');">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">PENGLIPURAN BALI</div>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-left" data-aos-delay="200" data-aos-duration="1500">
                         <div class="card-travel text-center d-flex flex-column" style="background-image: url('frontend/images/popular-2.jpg');">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">LABUAN BAJO LOMBOK</div>
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-left" data-aos-delay="400" data-aos-duration="1500">
                         <div class="card-travel text-center d-flex flex-column" style="background-image: url('frontend/images/popular-3.jpg');">
                             <div class="travel-country">INDONESIA</div>
                             <div class="travel-location">BROMO JAWA TIMUR</div>
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-left" data-aos-delay="600" data-aos-duration="1500">
                         <div class="card-travel text-center d-flex flex-column" style="background-image: url('frontend/images/popular-4.jpg');">
                             <div class="travel-country">PERU</div>
                             <div class="travel-location">MICHU PICHU URUBAMBA</div>
@@ -214,8 +214,8 @@
         <!-- Testimonial Content -->
         <section class="section-testimonial-content">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-sm-12 col-md-6 col-lg-3 text-center">
+                <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1500">
+                    <div class=" col-sm-12 col-md-6 col-lg-3 text-center">
                         <div class="card-testimonial">
                             <img src='frontend/images/testimonial-1.png' alt="testimonial1">
                             <h3>Carolin Mendes</h3>
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3 text-center">
-                        <div class="card-testimonial">
+                        <div class="card-testimonial" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500">
                             <img src='frontend/images/testimonial-2.png' alt="testimonial1">
                             <h3>Tom Jhonson</h3>
                             <p>" It was a great experience <br>
@@ -246,7 +246,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3 text-center">
-                        <div class="card-testimonial">
+                        <div class="card-testimonial" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1500">
                             <img src='frontend/images/testimonial-3.png' alt="testimonial1">
                             <h3>Anna Marrie</h3>
                             <p>" It was a great experience <br>
@@ -330,6 +330,34 @@
     <script src="frontend/libraries/jquery/jquery-3.6.0.min.js"></script>
     <!-- bootstrap.js -->
     <script src="frontend/libraries/bootstrap/js/bootstrap.js"></script>
+
+    <!-- AOS js -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+        });
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+    <script>
+        gsap.registerPlugin(TextPlugin);
+        gsap.to('.trip-exp', {
+            duration: 2,
+            delay: 1.5,
+            repeat: 2,
+            yoyo: true,
+            text: 'Create your memoriable moment !'
+        });
+        gsap.from('.navbar-brand', {
+            duration: 1.5,
+            y: '-100',
+            opacity: 0,
+            ease: 'bounce'
+        });
+    </script>
 
 
 </body>
