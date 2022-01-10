@@ -56,7 +56,12 @@
                     We've sent you email for trip instruction <br>
                     please read it as well
                 </p>
-                <a href="index.php" class="btn btn-home px-5 mt-4">Home</a>
+                <div class="row">
+                    <div class="col-12 text-center mt-4">
+                        <a href="index.php" class="btn btn-home px-5 mt-4 me-2 py-2">Home</a>
+                        <a href="https://wa.wizard.id/074385" target="_blank" class="btn btn-confirm-payment px-4 mt-4 py-2">Confirm Payment</a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -66,7 +71,7 @@
         <div class="container pt-5 pb-5">
             <div class="row justify-content-center text-center">
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row text-center text-md-start ms-md-5">
                         <div class="col-12 col-md-3">
                             <h5>FEATURES</h5>
                             <ul class="list-unstyled">

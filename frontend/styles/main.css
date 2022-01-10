@@ -423,6 +423,18 @@ header p {
   background-color: #24448f;
 }
 
+.section-succes .btn-confirm-payment {
+  text-decoration: none;
+  background-color: #fd8b2d;
+  color: #fff;
+  margin-top: 30px;
+}
+
+.section-succes .btn-confirm-payment:hover {
+  background-color: #fdb478;
+  color: #fff;
+}
+
 .header-login {
   min-height: 420px;
   background-color: #e4e6eb;

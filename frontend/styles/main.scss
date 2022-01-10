@@ -466,6 +466,18 @@ header p {
             background-color: #24448f;
         }
     }
+
+    .btn-confirm-payment {
+        text-decoration: none;
+        background-color: rgb(253, 139, 45);
+        color: #fff;
+        margin-top: 30px;
+
+        &:hover {
+            background-color: rgb(253, 180, 120);
+            color: #fff;
+        }
+    }
 }
 
 .header-login {
