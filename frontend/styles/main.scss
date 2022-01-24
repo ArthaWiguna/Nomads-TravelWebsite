@@ -580,3 +580,42 @@ header p {
     }
 
 }
+
+// Admin
+.card-left-admin {
+
+    background-color: #071c4d;
+    height: 800px;
+    border-radius: 10px;
+
+    .title-admin {
+        height: 78px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        h2 {
+            font-size: 28px;
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+
+    .list-menu {
+        background-color: #152b63;
+    }
+
+    img {
+        height: 36px;
+    }
+
+    p {
+        color: rgb(207, 207, 207);
+        font-size: 20px;
+    }
+
+
+}
+
+.card-transactions {
+    height: 800px;
+}

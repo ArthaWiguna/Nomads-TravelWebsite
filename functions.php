@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 $conn = new mysqli('localhost', 'root', '', 'nomads');
 
 // Select
-function query($query)
+function queryShowData($query)
 {
     global $conn;
 
@@ -29,26 +29,46 @@ function add()
     $visa = $_POST['inputVisa'];
     $passport = $_POST['inputPassport'];
     $profile = $_POST['inputProfile'];
+    $author = $_POST['inputAuthor'];
 
-    $query = "INSERT INTO member (username, nasionality,visa,passport,profile)
-              VALUES ('$username', '$nasionality', '$visa', '$passport', '$profile')";
+    $query = "INSERT INTO member (username, nasionality,visa,passport,profile,author)
+              VALUES ('$username', '$nasionality', '$visa', '$passport', '$profile', '$author')";
 
     mysqli_query($conn, $query);
 }
+
+//Update
+// function update($id)
+// {
+//     global $conn;
+
+//     $username = htmlspecialchars($_POST['inputUsername']);
+//     $nasionality = htmlspecialchars($_POST['inputNasionality']);
+//     $visa = $_POST['inputVisa'];
+//     $passport = $_POST['inputPassport'];
+//     $profile = $_POST['inputProfile'];
+//     $author = $_POST['inputAuthor'];
+
+//     $query = "UPDATE member SET username = '$username', nasionality = '$nasionality', visa = '$visa', passport = '$passport', 
+//               profile = '$profile', author = '$author' WHERE id = $id";
+//     mysqli_query($conn, $query);
+// }
 
 // Calculate total cost
 $tripPrice = 80;
 function totalMember()
 {
+    $getEmail = $_SESSION['email'];
     global $conn;
-    $getMember = mysqli_query($conn, "SELECT * FROM member");
+    $getMember = mysqli_query($conn, "SELECT * FROM member WHERE author = '$getEmail'");
     $countMember = mysqli_num_rows($getMember);
     return $countMember;
 }
 function costVisa()
 {
+    $getEmail = $_SESSION['email'];
     global $conn;
-    $getVisa = mysqli_query($conn, "SELECT visa FROM member WHERE visa = 'N/A'");
+    $getVisa = mysqli_query($conn, "SELECT visa FROM member WHERE visa = 'N/A' AND author = '$getEmail'");
     $calculateVisa = mysqli_num_rows($getVisa) * 190;
     return $calculateVisa;
 }
@@ -107,16 +127,45 @@ function login($data)
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    //login memeber
     $result = mysqli_query($conn, "SELECT * FROM member_register WHERE email = '$email'");
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row['password'])) {
+
+        if ($row['level'] == "admin") {
             $_SESSION['login'] = true;
             echo "<script>
-                document.location.href = 'checkout.php';
+                document.location.href = 'admin.php';
              </script>";
-            exit;
+        } else if ($row['level'] == 'member') {
+
+            if (password_verify($password, $row['password'])) {
+                $_SESSION['login'] = true;
+                $_SESSION['email'] = $email;
+                echo "<script>
+                    document.location.href = 'checkout.php';
+                 </script>";
+            }
         }
     }
+}
+
+// Confirm transaction
+function confirm()
+{
+    global $conn;
+    $getAuthor = $_SESSION['email'];
+    $totalMember = totalMember();
+    $totalCost = subTotal();
+    $status = 'Pending Approve';
+
+    $query = "INSERT INTO member_transaction (author, member, total_cost, status)
+              VALUES ('$getAuthor', '$totalMember', '$totalCost', '$status')";
+
+    mysqli_query($conn, $query);
+
+    echo "<script>
+            document.location.href = 'succes.php';
+        </script>";
 }

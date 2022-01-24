@@ -53,12 +53,11 @@
                 <img src="frontend/images/ic_succes.png" alt="succes" class="mb-4">
                 <h2>Yay Succes!</h2>
                 <p>
-                    We've sent you email for trip instruction <br>
-                    please read it as well
+                    Please complete your transaction process by sending proof of payment, <br> Click the confirm button below!
                 </p>
                 <div class="row">
                     <div class="col-12 text-center mt-4">
-                        <a href="index.php" class="btn btn-home px-5 mt-4 me-2 py-2">Home</a>
+                        <a href="member-transaction.php" class="btn btn-home px-5 mt-4 me-2 py-2">Your Transaction</a>
                         <a href="https://wa.wizard.id/074385" target="_blank" class="btn btn-confirm-payment px-4 mt-4 py-2">Confirm Payment</a>
                     </div>
                 </div>

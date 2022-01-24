@@ -234,9 +234,8 @@
                         <div class="card-testimonial" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500">
                             <img src='frontend/images/testimonial-2.png' alt="testimonial1">
                             <h3>Tom Jhonson</h3>
-                            <p>" It was a great experience <br>
-                                to saw the memoriable place <br>
-                                each the world "
+                            <p>" Never could I imagined the <br> wonderful experiences awaited <br>
+                                me before began our trip "
                             </p>
                             <hr>
                             <p class="trip-to">
@@ -249,9 +248,7 @@
                         <div class="card-testimonial" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1500">
                             <img src='frontend/images/testimonial-3.png' alt="testimonial1">
                             <h3>Anna Marrie</h3>
-                            <p>" It was a great experience <br>
-                                to saw the memoriable place <br>
-                                each the world "
+                            <p>" We had a great and <br> meaningful time of journey and <br> it was a highlight to meet you. "
                             </p>
                             <hr>
                             <p class="trip-to">

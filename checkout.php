@@ -6,8 +6,8 @@ if (!isset($_SESSION)) {
 
 if (!isset($_SESSION['login'])) {
     echo "<script>
-            document.location.href = 'login.php';
-          </script>";
+                document.location.href = 'login.php';
+            </script>";
     exit;
 }
 
@@ -16,12 +16,21 @@ require('functions.php');
 
 //Add
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    add();
+    if (isset($_POST['submit'])) {
+        add();
+    }
+    if (isset($_POST['confirm-payment'])) {
+        confirm();
+    }
 }
-// Select
-$member = query("SELECT * FROM member");
-?>
 
+
+// Select
+$getEmail = $_SESSION['email'];
+$member = queryShowData("SELECT * FROM member WHERE author = '$getEmail'");
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -139,35 +148,40 @@ $member = query("SELECT * FROM member");
                             </div>
                             <div class="member">
                                 <h2>Add Member</h2>
+
                                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label for="inputUsername" class="d-none">Username</label>
-                                            <input type="text" name="inputUsername" class="form-control mb-2 me-sm-2" id="inputUsername" placeholder="Username" required>
+                                            <input type="text" name="inputUsername" class="form-control mb-2 me-sm-2" id="inputUsername" placeholder="Username" value="<?= @$username ?>" required>
                                         </div>
-                                        <div class="col-3">
+                                        <div class=" col-4">
                                             <label for="inputNasionality" class="d-none">Nasionality</label>
-                                            <input type="text" name="inputNasionality" class="form-control mb-2 me-sm-2" id="inputNasionality" placeholder="Nasionality" required>
+                                            <input type="text" name="inputNasionality" class="form-control mb-2 me-sm-2" id="inputNasionality" placeholder="Nasionality" value="<?= @$nasionality ?>" required>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label for="inputVisa" class="d-none">VISA</label>
                                             <select name="inputVisa" class="form-select mb-2 me-sm-2" id="inputVisa" required>
-                                                <option value="Visa" selected>VISA</option>
+                                                <option value="Visa" selected>Visa</option>
                                                 <option value="30 Days">30 Days</option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <label for="doePassport" class="d-none">Passport</label>
                                             <div class="input-group form-control mb-2 me-sm-2">
-                                                <input type="text" name="inputPassport" class="datepicker" id="doePassport" placeholder="Passport" style="border: none; width: 100%;" required>
+                                                <input type="text" name="inputPassport" class="datepicker" id="doePassport" placeholder="Passport" style="border: none; width: 100%;" value="<?= @$passport ?>" required>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <label for="profilPicture" class="d-none">Profil Picture</label>
-                                            <input type="file" name="inputProfile" class="form-control mb-2 me-sm-2" id="profilPicture" placeholder="Picture" required>
+                                            <input type="file" name="inputProfile" class="form-control mb-2 me-sm-2" id="profilPicture" placeholder="Picture" value="<?= @$profile ?>" required>
+                                        </div>
+                                        <div class="col-4">
+                                            <label for="inputAuthor" class="d-none">Author</label>
+                                            <input type="email" name="inputAuthor" class="form-control mb-2 me-sm-2" id="inputAuthor" placeholder="Email Author" value="<?= @$author ?>" required>
                                         </div>
                                         <div class="col-3">
                                             <input type="submit" name="submit" value="Add Member" class="btn btn-add-now mb-2 px-4">
@@ -177,85 +191,89 @@ $member = query("SELECT * FROM member");
 
                                 <h3 class="mt-2 mb-0">Note</h3>
                                 <p class="disclaimer">
-                                    You are only able to invite member who has registered in nomads
+                                    Please fill in the author email correctly to make easier for the registration trip
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!-- Card Right -->
                     <div class="col-lg-4 mt-4 mt-lg-0">
-                        <div class="card-right card-details py-3">
-                            <div class="trip-details">
-                                <h2>Checkout Informations</h2>
-                                <table class="py-2">
-                                    <tr>
-                                        <td width="50%">Members</td>
-                                        <td width="50%" class="text-end data"><?= totalMember(); ?> Person</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="50%">Aditional VISA</td>
-                                        <td width="50%" class="text-end data">$<?= costVisa(); ?>,00</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="50%">Trip Price</td>
-                                        <td width="50%" class="text-end data">$80 / person</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="50%">Sub Total</td>
-                                        <td width="50%" class="text-end data">$<?= subTotal(); ?>,00</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="50%">Total (+ Unique Code)</td>
-                                        <td width="50%" class="text-end data total fw-bold">$<?= subTotal(); ?>,33</td>
-                                    </tr>
-                                </table>
-                                <hr>
-                                <h2>Payment Instructions</h2>
-                                <p class="payment-instructions">Please complete your payment before start your beautifull trip</p>
-                                <div class="bank py-4">
-                                    <div class="row bank-item mb-4">
-                                        <div class="col-auto">
-                                            <img src="frontend/images/ic_bankbca.png" class="bank-image" height="60px">
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="description">
-                                                <h3 class="mb-1">PT Nomads Indonesia</h3>
-                                                <p>
-                                                    88165437866
-                                                    <br>
-                                                    Bank Central Asia
-                                                </p>
+                        <form method="POST" action="">
+                            <div class="card-right card-details py-3">
+                                <div class="trip-details">
+                                    <h2>Checkout Informations</h2>
+                                    <table class="py-2">
+                                        <tr>
+                                            <td width="50%">Members</td>
+                                            <td width="50%" class="text-end data"><?= totalMember(); ?> Person</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Aditional VISA</td>
+                                            <td width="50%" class="text-end data">$<?= costVisa(); ?>,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Trip Price</td>
+                                            <td width="50%" class="text-end data">$80 / person</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Sub Total</td>
+                                            <td width="50%" class="text-end data">$<?= subTotal(); ?>,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">Total (+ Unique Code)</td>
+                                            <td width="50%" class="text-end data total fw-bold">$<?= subTotal(); ?>,33</td>
+                                        </tr>
+                                    </table>
+                                    <hr>
+                                    <h2>Payment Instructions</h2>
+                                    <p class="payment-instructions">Please complete your payment before start your beautifull trip</p>
+                                    <div class="bank py-4">
+                                        <div class="row bank-item mb-4">
+                                            <div class="col-auto">
+                                                <img src="frontend/images/ic_bankbca.png" class="bank-image" height="60px">
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="description">
+                                                    <h3 class="mb-1">PT Nomads Indonesia</h3>
+                                                    <p>
+                                                        88165437866
+                                                        <br>
+                                                        Bank Central Asia
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row bank-item">
-                                        <div class="col-auto">
-                                            <img src="frontend/images/ic_bankbri.png" class="bank-image" height="60px">
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="description">
-                                                <h3 class="mb-1">PT Nomads Indonesia</h3>
-                                                <p>
-                                                    51843789065432
-                                                    <br>
-                                                    Bank Rakyat Indonesia
-                                                </p>
+                                        <div class="row bank-item">
+                                            <div class="col-auto">
+                                                <img src="frontend/images/ic_bankbri.png" class="bank-image" height="60px">
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="description">
+                                                    <h3 class="mb-1">PT Nomads Indonesia</h3>
+                                                    <p>
+                                                        51843789065432
+                                                        <br>
+                                                        Bank Rakyat Indonesia
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="join-container">
-                            <div class="d-grid gap-2">
-                                <a href="succes.php" class="btn btn-join text-center mt-3 py-2">I Have Made Pyment</a>
+                            <div class="join-container">
+                                <div class="d-grid gap-2">
+                                    <a href="succes.php">
+                                        <input type="submit" name="confirm-payment" value="I Have Made Payment" class="btn btn-join text-center mt-3 py-2 w-100">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-center mt-4">
-                            <a href="details.php" class="text-muted">Cancel Booking</a>
-                        </div>
+                            <div class="text-center mt-4">
+                                <a href="details.php" class="text-muted">Cancel Booking</a>
+                            </div>
                     </div>
+                    </form>
 
                 </div>
             </div>
